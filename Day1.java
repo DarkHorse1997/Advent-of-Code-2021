@@ -1,21 +1,25 @@
 import java.io.*;
+import java.util.ArrayList;
 
 public class Day1 {
     public static void main(String[] args) throws IOException {
         BufferedReader r = new BufferedReader(new FileReader("input.in"));
-        PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("day1-sonar-sweep.out")));
+        PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("day1-sonar-sweep-part-2.out")));
         String st;
         int increaseCount = 0;
-        int prevValue = 0;
+        ArrayList<Integer> sumArray = new ArrayList<>();
 
         while ((st = r.readLine()) != null) {
             int currentValue = Integer.parseInt(st);
-            if (currentValue > prevValue) {
+            sumArray.add(currentValue);
+
+        }
+        for (int i = 3; i < sumArray.size(); i++) {
+            if (sumArray.get(i) > sumArray.get(i - 3)) {
                 increaseCount++;
             }
-            prevValue = currentValue;
         }
-        pw.println(increaseCount - 1);
+        pw.println(increaseCount);
 
         r.close();
         pw.close();
