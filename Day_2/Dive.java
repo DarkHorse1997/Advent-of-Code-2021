@@ -9,15 +9,18 @@ public class Dive {
         String st;
         int position = 0;
         int depth = 0;
+        int aim = 0;
 
         while ((st = r.readLine()) != null) {
             String[] input = st.split(" ");
+            int X = Integer.parseInt(input[1]);
             if (input[0].equals("forward")) {
-                position += Integer.parseInt(input[1]);
+                position += X;
+                depth += aim * X;
             } else if (input[0].equals("down")) {
-                depth += Integer.parseInt(input[1]);
+                aim += X;
             } else if (input[0].equals("up")) {
-                depth -= Integer.parseInt(input[1]);
+                aim -= X;
             }
 
         }
